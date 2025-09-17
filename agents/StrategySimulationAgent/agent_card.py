@@ -11,8 +11,21 @@ class StrategySimulationAgentCard:
         "propose_new_dispatch_and_delivery_plan", # 새로운 배차 및 배송 전략 제안
         "simulate_alternative_scenarios"          # 자원 부족/리콜 상황 등 대체 시뮬레이션
     ]
+    tags = ["strategy", "simulation"]
+    endpoint = "http://localhost:5005" # Add endpoint here
     # Ollama Mistral integration point (example)
     llm_model = "mistral"
 
     # Redis integration point (example)
     redis_key_prefix = "strategy_simulation_agent:"
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "capabilities": self.capabilities,
+            "tags": self.tags, # Add tags here
+            "endpoint": self.endpoint, # Add endpoint here
+            "llm_model": self.llm_model,
+            "redis_key_prefix": self.redis_key_prefix
+        }

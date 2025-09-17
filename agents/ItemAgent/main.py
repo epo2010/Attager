@@ -1,15 +1,6 @@
 # agents/itemAgent/main.py
 
-from .executor import ItemAgentExecutor
+from .app import app
 
-def run_item_agent_task(task_name, payload):
-    executor = ItemAgentExecutor()
-    return executor.execute_task(task_name, payload)
-
-if __name__ == "__main__":
-    print("\n--- Running Item Agent: Get Recall Product Inventory ---")
-    result = run_item_agent_task(
-        "get_recall_product_inventory",
-        {"product_id": "E123"}
-    )
-    print(f"Get Recall Product Inventory Result: {result}")
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5002)

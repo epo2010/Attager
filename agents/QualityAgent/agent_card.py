@@ -13,8 +13,21 @@ class QualityAgentCard:
         "set_disposition_for_defect_items", # 재작업/폐기/재포장/재판매 결정
         "record_defect_codes_and_metrics"   # 결함 코드 기록 및 리포트 기초 데이터 축적
     ]
+    tags = ["quality", "inspection"]
+    endpoint = "http://localhost:5004" # Add endpoint here
     # Ollama Mistral integration point (example)
     llm_model = "mistral"
 
     # Redis integration point (example)
     redis_key_prefix = "quality_agent:"
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "capabilities": self.capabilities,
+            "tags": self.tags, # Add tags here
+            "endpoint": self.endpoint, # Add endpoint here
+            "llm_model": self.llm_model,
+            "redis_key_prefix": self.redis_key_prefix
+        }

@@ -7,8 +7,21 @@ class OrchestrationAgentCard:
         "report_new_dispatch_and_delivery_strategy",
         "report_recall_progress"
     ]
+    tags = ["orchestration", "report"]
+    endpoint = "http://localhost:5003" # Add endpoint here
     # Ollama Mistral integration point (example)
     llm_model = "mistral"
 
     # Redis integration point (example)
     redis_key_prefix = "orchestration_agent:"
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "capabilities": self.capabilities,
+            "tags": self.tags, # Add tags here
+            "endpoint": self.endpoint, # Add endpoint here
+            "llm_model": self.llm_model,
+            "redis_key_prefix": self.redis_key_prefix
+        }

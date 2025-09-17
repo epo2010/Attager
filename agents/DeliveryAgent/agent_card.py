@@ -13,8 +13,21 @@ class DeliveryAgentCard:
         "manage_recall_deliveries",        # 리콜 상품 회수 및 배송 일정 관리
         "schedule_delivery_dates"          # 배송 예정일 생성 및 관리
     ]
+    tags = ["delivery", "logistics"]
+    endpoint = "http://localhost:5001" # Add endpoint here
     # Ollama Mistral integration point (example)
     llm_model = "mistral"
 
     # Redis integration point (example)
     redis_key_prefix = "delivery_agent:"
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "capabilities": self.capabilities,
+            "tags": self.tags, # Add tags here
+            "endpoint": self.endpoint, # Add endpoint here
+            "llm_model": self.llm_model,
+            "redis_key_prefix": self.redis_key_prefix
+        }

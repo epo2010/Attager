@@ -16,6 +16,8 @@ class VehicleAgentCard:
         "schedule_vehicle_maintenance",    # 정비 일정 등록/반영
         "assign_recall_vehicles"           # (옵션) 리콜 회수 전용 차량 배정
     ]
+    tags = ["vehicle", "dispatch"]
+    endpoint = "http://localhost:5006" # Add endpoint here
 
     # 상태 전이 모델(참고용 메타데이터)
     state_model = {
@@ -31,3 +33,15 @@ class VehicleAgentCard:
 
     # Redis integration point (example)
     redis_key_prefix = "vehicle_agent:"
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "description": self.description,
+            "capabilities": self.capabilities,
+            "tags": self.tags, # Add tags here
+            "endpoint": self.endpoint, # Add endpoint here
+            "state_model": self.state_model,
+            "llm_model": self.llm_model,
+            "redis_key_prefix": self.redis_key_prefix
+        }
